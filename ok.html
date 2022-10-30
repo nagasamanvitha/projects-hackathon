@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        *{
+            background-repeat: no-repeat;
+        }
+        #body{
+            background: url("https://picstatio.com/large/beaff7/colorful-shapes-traingles-4k.jpg");
+        }
+        #grid{
+            margin:20px 20px;
+            display: grid;
+            grid-template-columns: 1fr 1fr 1fr;
+            grid-gap:20px;
+            grid-auto-rows: minmax(50px,auto);
+            grid-auto-columns: minmax(50px,auto);
+            /* background-color: black; */
+        }
+        .whole_schedules{
+            padding: 10px 10px;
+            border-radius: 8px;
+            color: white;
+        }
+        input[type="file"],
+        input[type="text"],
+        input[type="number"],
+        input[type="datetime-local"],
+        select,
+        textarea{
+            padding:6px;
+            border:1px solid rgb(204, 204, 204);
+            border-radius: 5px;
+            margin:10px;
+            width:80%;
+            text-align: center;
+            background-color: rgba(255, 255, 255, 0.881);
+        }
+    </style>
+</head>
+<body id="body">
+    <p>Note:click on the img to add new schedule!!</p>
+    <div id="grid">
+        <img id="img" src="https://cdn3.iconfinder.com/data/icons/material-set-9-3/48/806-512.png" alt="this is an image" width="200"></img>
+    </div>
+    <script>
+        img.addEventListener('click',createNewSchedule)
+        function createNewSchedule(){
+            let newdiv=document.createElement("div")
+            newdiv.id=`new_div`
+            newdiv.className="whole_schedules"
+            newdiv.innerHTML=`
+            <h4>TITLE:<input type="text" name="title" id="title"</h4>
+            <p class="input_elements">From (datetime-local) :<input type="datetime-local" name="date_time" id="date_time"></p>
+            <p class="input_elements">To   (datetime-local)      :<input type="datetime-local" name="date-time" id="date-time"></p>
+            <p class="input_elements">Remainder:
+                <select name="remainder" id="remainder">
+                <option value="">_select time_</option>
+                <option value="1hr">1 Hour Before</option>
+                <option value="2hr">2 Hours Before</option>
+                 </select>
+            </p>
+            <p class="input_elements">Upload file <input type="file" name="Upload_file" id="Upload_file"></p>
+            <p class="input_elements">Person working on it:
+                <select name="_cruee" id="_cruee">
+                    <option value="">_select person_</option>
+                    <option value="087">samanvitha</option>
+                    <option value="104">teja</option>
+                </select>
+            </P>
+            `
+            grid.prepend(newdiv);
+            document.getElementById(`new_div`).style.backgroundColor="rgba(0, 0, 0, 0.53)";
+        }
+    </script>
+</body>
+</html>
